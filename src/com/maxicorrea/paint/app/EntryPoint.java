@@ -26,7 +26,7 @@ public class EntryPoint {
     ImageView imageView = new ImageView();
     Brush brush = new Brush(new Location(10, 10), new Pixel(3, 3, 4));
     new PaletteController(brush, paletteView);
-    Image image = new ImageReader().read(new File("resources/bob_esponja.bmp"));
+    Image image = new ImageReader().read(new File("resources/pato_donal.bmp"));
     new ImageController(image, brush, imageView);
     PaintView paintView = new PaintView(imageView, paletteView);
     paintView.setLocationRelativeTo(null);

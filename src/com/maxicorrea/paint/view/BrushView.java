@@ -25,8 +25,7 @@ public class BrushView extends JLabel {
   public Cursor createCursor() {
     Toolkit toolkit = Toolkit.getDefaultToolkit();
     Image image = icon.getImage();
-    Cursor c = toolkit.createCustomCursor(image, new Point(getX(),getY()), "img");
-    return c;
+    return toolkit.createCustomCursor(image, new Point(getX(),getY()), "img");
   }
 
 }
