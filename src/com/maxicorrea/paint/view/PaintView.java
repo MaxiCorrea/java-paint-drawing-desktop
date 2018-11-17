@@ -4,6 +4,7 @@ import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.EAST;
 import static java.awt.BorderLayout.NORTH;
 import static java.awt.BorderLayout.SOUTH;
+import static java.awt.BorderLayout.WEST;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -15,13 +16,17 @@ public class PaintView extends JFrame {
   private TitleView titleView;
   private BrushView brushView;
 
-  public PaintView(ImageView imageView, PaletteView paletteView) {
-    setSize(900, 600);
+  public PaintView(SelectorView selectorView ,
+                   CartoonView imageView, 
+                   PaletteView paletteView) {
+    
+    setSize(1_000, 600);
     titleView = new TitleView(this);
     brushView = new BrushView();
     setCursor(brushView.createCursor());
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     getContentPane().add(titleView, NORTH);
+    getContentPane().add(selectorView, WEST);
     getContentPane().add(imageView, CENTER);
     getContentPane().add(paletteView, EAST);
     getContentPane().add(createFooterPane(),SOUTH);
@@ -33,6 +38,11 @@ public class PaintView extends JFrame {
     pane.setPreferredSize(new Dimension(900 , 30));
     pane.setBackground(new Color(166,193,13));
     return pane;
+  }
+
+  public void showApp() {
+    setLocationRelativeTo(null);
+    setVisible(true);
   }
   
 }

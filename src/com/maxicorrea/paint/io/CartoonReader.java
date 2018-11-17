@@ -4,18 +4,18 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import com.maxicorrea.paint.model.Image;
+import com.maxicorrea.paint.model.Cartoon;
 import com.maxicorrea.paint.model.Pixel;
 import com.maxicorrea.paint.model.Size;
 
-public class ImageReader {
+public class CartoonReader {
 
-  public Image read(File file) throws BmpInputException {
-    try (FileInputStream fi = new FileInputStream(file);
+  public Cartoon read(String path) throws BmpInputException {
+    try (FileInputStream fi = new FileInputStream(new File(path));
         BufferedInputStream bi = new BufferedInputStream(fi)) {
       readFileHeader(bi);
       Size size = readInfoHeader(bi);
-      return read(bi, size);
+      return read(bi ,size);
     } catch (IOException ex) {
       throw new BmpInputException();
     }
@@ -58,8 +58,8 @@ public class ImageReader {
     return size;
   }
 
-  private Image read(BufferedInputStream bi, Size size) throws IOException {
-    Image image = new Image(size);
+  private Cartoon read(BufferedInputStream bi, Size size) throws IOException {
+    Cartoon image = new Cartoon(size);
     int padding = size.getWidth() % BmpConstants.PADDING;
     byte[] bytes = new byte[3];
     for (int i = size.getHeight() - 1; i >= 0; i--) {
@@ -77,7 +77,6 @@ public class ImageReader {
           throw new IOException();
         }
       }
-
     }
     return image;
   }

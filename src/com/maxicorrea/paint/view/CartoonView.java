@@ -12,48 +12,48 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import com.maxicorrea.paint.controller.ImageController;
-import com.maxicorrea.paint.model.Image;
+import com.maxicorrea.paint.app.Controller;
+import com.maxicorrea.paint.model.Cartoon;
 
-public class ImageView extends JPanel {
+public class CartoonView extends JPanel {
   private static final long serialVersionUID = 1L;
 
-  private JLabel imageLabel;
+  private JLabel cartoonLabel;
 
-  public ImageView() {
+  public CartoonView() {
     super(new BorderLayout());
-    add(createImageLabel(), CENTER);
+    add(createCartoonLabel(), CENTER);
   }
 
-  private JPanel createImageLabel() {
+  private JPanel createCartoonLabel() {
     JPanel pane = new JPanel();
-    imageLabel = new JLabel();
-    imageLabel.setBackground(WHITE);
-    pane.add(imageLabel);
+    cartoonLabel = new JLabel();
+    cartoonLabel.setBackground(WHITE);
+    pane.add(cartoonLabel);
     return pane;
   }
 
-  public void updateImage(Image image) {
-    int width = image.getSize().getWidth();
-    int height = image.getSize().getHeight();
+  public void updateCartoon(Cartoon cartoon) {
+    int width = cartoon.getSize().getWidth();
+    int height = cartoon.getSize().getHeight();
     BufferedImage buffImg = new BufferedImage(width, height, TYPE_INT_ARGB);
     for (int row = 0; row < height; ++row) {
       for (int col = 0; col < width; ++col) {
-        int r = image.getPixel(row, col).getRed();
-        int g = image.getPixel(row, col).getGreen();
-        int b = image.getPixel(row, col).getBlue();
+        int r = cartoon.getPixel(row, col).getRed();
+        int g = cartoon.getPixel(row, col).getGreen();
+        int b = cartoon.getPixel(row, col).getBlue();
         buffImg.setRGB(col, row, (new Color(r, g, b)).getRGB());
       }
     }
-    imageLabel.setIcon(new ImageIcon(buffImg));
+    cartoonLabel.setIcon(new ImageIcon(buffImg));
   }
 
-  public void setController(ImageController imageController) {
-    imageLabel.addMouseListener(new MouseAdapter() {
+  public void setController(Controller controller) {
+    cartoonLabel.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(MouseEvent e) {
         Point point = e.getPoint();
-        imageController.paintIn(point.x, point.y);
+        controller.paintIn(point.x, point.y);
       }
     });
   }

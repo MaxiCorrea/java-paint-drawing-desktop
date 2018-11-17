@@ -2,16 +2,29 @@ package com.maxicorrea.paint.model;
 
 import java.util.ArrayDeque;
 
-public class Image {
+public class Cartoon {
 
+  public static Cartoon createNotLoaded() {
+    return new Cartoon(new Size(512, 712));
+  }
+  
   private final Size size;
-  private final Pixel[][] pixels;
-
-  public Image(Size size) {
+  private boolean loaded;
+  private Pixel[][] pixels;
+  
+  public Cartoon(Size size) {
     this.size = size;
     pixels = new Pixel[size.getHeight()][size.getWidth()];
   }
 
+  public void setPixels(Pixel[][] pixels) {
+    this.pixels = pixels;
+  }
+  
+  public Pixel[][] getPixels() {
+    return pixels;
+  }
+  
   public void setPixel(int row, int col, Pixel pixel) {
     pixels[row][col] = pixel;
   }
@@ -20,6 +33,14 @@ public class Image {
     return pixels[row][col];
   }
 
+  public boolean isLoaded() {
+    return loaded;
+  }
+  
+  public void setLoader(boolean status) {
+    loaded = status;
+  }
+  
   public Size getSize() {
     return size;
   }
@@ -29,7 +50,7 @@ public class Image {
     Location location = brush.getLocation();
     Pixel oldColor = pixels[location.getX()][location.getY()];
     if (!newColor.equals(oldColor)) {
-      paint(brush.getLocation(), newColor, oldColor);
+      paint(location, newColor, oldColor);
     }
   }
 

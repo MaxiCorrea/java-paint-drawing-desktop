@@ -12,7 +12,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import com.maxicorrea.paint.controller.PaletteController;
+import com.maxicorrea.paint.app.Controller;
 
 public class PaletteView extends JPanel {
 
@@ -37,15 +37,7 @@ public class PaletteView extends JPanel {
     southPane.setBackground(WHITE);
     add(southPane , SOUTH);
   }
-
-  public void setController(PaletteController controller) {
-    for (JButton button : colorsList) {
-      button.addActionListener((e) -> {
-        controller.selectColor(e.getActionCommand());
-      });
-    }
-  }
-
+  
   public void addColor(int r, int g, int b, String command) {
     Color color = new Color(r, g, b);
     ColorView colorView = new ColorView();
@@ -53,6 +45,14 @@ public class PaletteView extends JPanel {
     colorView.setActionCommand(command);
     centerPane.add(colorView);
     colorsList.add(colorView);
+  }
+
+  public void setController(Controller controller) {
+    for (JButton button : colorsList) {
+      button.addActionListener((e) -> {
+        controller.selectColor(e.getActionCommand());
+      });
+    }
   }
 
 }
