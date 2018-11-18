@@ -6,12 +6,12 @@ public enum Selector {
     
     @Override
     public String getThumbnailsPath() {
-      return "resources/thumbnails/pato_donal.png";
+      return "/thumbnails/pato_donal.png";
     }
     
     @Override
     public String getCartoonPath() {
-      return "resources/cartoons/pato_donal.bmp";
+      return "cartoons/pato_donal.bmp";
     }
   },
 
@@ -19,12 +19,24 @@ public enum Selector {
     
     @Override
     public String getThumbnailsPath() {
-      return "resources/thumbnails/bob_esponja.png";
+      return "/thumbnails/bob_esponja.png";
     }
     
     @Override
     public String getCartoonPath() {
-      return "resources/cartoons/bob_esponja.bmp";
+      return "cartoons/bob_esponja.bmp";
+    }
+  },
+  
+  MINION(Cartoon.createNotLoaded()) {
+    @Override
+    public String getThumbnailsPath() {
+      return "/thumbnails/minions.png";
+    }
+    
+    @Override
+    public String getCartoonPath() {
+      return "cartoons/minions.bmp";
     }
   };
   

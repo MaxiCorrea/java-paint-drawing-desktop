@@ -2,7 +2,6 @@ package com.maxicorrea.paint.app;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.maxicorrea.paint.io.BmpInputException;
 import com.maxicorrea.paint.io.CartoonReader;
 import com.maxicorrea.paint.io.CartoonWriter;
 import com.maxicorrea.paint.model.Brush;
@@ -28,20 +27,20 @@ public class Application {
     this.writer = writer;
   }
 
-  public void printCartoon(String path) {
+  public void printCartoon(String path){
     if(cartoon != null) {
-      writer.write(cartoon);
+      writer.write(cartoon,path);
     }
   }
-  
-  public void changeCartoon(String idSelector) throws BmpInputException {
+    
+  public void changeCartoon(String idSelector) {
     Selector selector = Selector.valueOf(idSelector);
     if (!selector.cartoon.isLoaded()) {
-        String path = selector.getCartoonPath();
-        Cartoon c = reader.read(path);
-        Pixel[][] pixels = c.getPixels();
-        selector.cartoon.setPixels(pixels);
-        selector.cartoon.setLoader(true);
+      String path = selector.getCartoonPath();
+      Cartoon c = reader.read(path);
+      Pixel[][] pixels = c.getPixels();
+      selector.cartoon.setPixels(pixels);
+      selector.cartoon.markAsLoaded();
     }
     cartoon = selector.cartoon;
   }
@@ -79,10 +78,7 @@ public class Application {
   public List<Pixel> getPaletteColors() {
     List<Pixel> pixels = new ArrayList<>();
     for(Palette palette : Palette.values()) {
-      int r = palette.getColor().getRed();
-      int g = palette.getColor().getGreen();
-      int b = palette.getColor().getBlue();
-      pixels.add( new Pixel(r, g, b));
+      pixels.add(palette.getColor());
     }
     return pixels;
   }

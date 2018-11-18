@@ -16,7 +16,7 @@ public class BrushView extends JLabel {
   
   public BrushView() {
     Toolkit toolkit = Toolkit.getDefaultToolkit();
-    Image image = toolkit.getImage("resources/brush.png");
+    Image image = toolkit.getImage(getClass().getResource("/brush.png"));
     icon = new ImageIcon(image);
     setIcon(icon);
     setBackground(Color.BLACK);

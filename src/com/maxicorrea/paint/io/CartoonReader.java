@@ -10,14 +10,15 @@ import com.maxicorrea.paint.model.Size;
 
 public class CartoonReader {
 
-  public Cartoon read(String path) throws BmpInputException {
+  public Cartoon read(String path) {
     try (FileInputStream fi = new FileInputStream(new File(path));
         BufferedInputStream bi = new BufferedInputStream(fi)) {
       readFileHeader(bi);
       Size size = readInfoHeader(bi);
       return read(bi ,size);
     } catch (IOException ex) {
-      throw new BmpInputException();
+      ex.printStackTrace();
+      return null;
     }
   }
 

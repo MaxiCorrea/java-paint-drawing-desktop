@@ -27,7 +27,7 @@ public class TitleView extends JLabel {
   public TitleView(JFrame mainFrame) {
     super("", JLabel.CENTER);
     Toolkit toolkit = Toolkit.getDefaultToolkit();
-    Image image = toolkit.getImage("resources/title.png");
+    Image image = toolkit.getImage(getClass().getResource("/title.png"));
     setIcon(new ImageIcon(image));
     this.mainFrame = mainFrame;
     setOpaque(true);
@@ -63,7 +63,7 @@ public class TitleView extends JLabel {
     if (close == null) {
       close = new JLabel();
       Toolkit toolkit = Toolkit.getDefaultToolkit();
-      Image image = toolkit.getImage("resources/close.png");
+      Image image = toolkit.getImage(getClass().getResource("/close.png"));
       ImageIcon icon = new ImageIcon(image);
       close.setIcon(icon);
       close.addMouseListener(new MouseAdapter() {
@@ -86,7 +86,7 @@ public class TitleView extends JLabel {
     if (mini == null) {
       mini = new JLabel();
       Toolkit toolkit = Toolkit.getDefaultToolkit();
-      Image image = toolkit.getImage("resources/mini.png");
+      Image image = toolkit.getImage(getClass().getResource("/mini.png"));
       ImageIcon icon = new ImageIcon(image);
       mini.setIcon(icon);
       mini.addMouseListener(new MouseAdapter() {

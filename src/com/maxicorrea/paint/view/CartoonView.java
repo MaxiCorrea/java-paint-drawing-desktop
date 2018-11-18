@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import com.maxicorrea.paint.app.Controller;
@@ -56,6 +57,14 @@ public class CartoonView extends JPanel {
         controller.paintIn(point.x, point.y);
       }
     });
+  }
+
+  public String getSavePath() {
+    JFileChooser chooser = new JFileChooser();
+    if(chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+      return chooser.getSelectedFile().getAbsolutePath();
+    }
+    return null;
   }
 
 }

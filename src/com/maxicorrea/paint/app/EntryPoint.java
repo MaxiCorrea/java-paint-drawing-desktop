@@ -11,7 +11,7 @@ import com.maxicorrea.paint.view.SelectorView;
 
 public class EntryPoint {
 
-  public static void main(String[] args)  {
+  public static void main(String[] args)  {    
     Brush brush = Brush.createDefault();
     CartoonReader reader = new CartoonReader();
     CartoonWriter writer = new CartoonWriter();

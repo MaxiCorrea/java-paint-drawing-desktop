@@ -27,7 +27,7 @@ public class SelectorView extends JPanel {
 
   public void addSelector(String thumbnail, String command) {
     Toolkit toolkit = Toolkit.getDefaultToolkit();
-    Image image = toolkit.getImage(thumbnail);
+    Image image = toolkit.getImage(getClass().getResource(thumbnail));
     JButton button = new JButton(new ImageIcon(image));
     button.setBackground(Color.WHITE);
     button.setActionCommand(command);
