@@ -7,6 +7,10 @@ Simple desktop application for children to have fun painting cartoons.
 
 - Swing
 
+## Youtube
+
+https://www.youtube.com/watch?v=jgtCUWV0xX4
+
 ## Screenshots
 
 ![captura de pantalla_2018-11-18_14-37-28](https://user-images.githubusercontent.com/34853850/48676084-78af7880-eb40-11e8-9c8c-e4a624b79621.png)
